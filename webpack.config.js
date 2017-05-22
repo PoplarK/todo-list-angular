@@ -1,18 +1,19 @@
 const path = require('path');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+// const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, "dist"),
+  context: path.resolve(__dirname, "src"),
   entry: {
     index: './main.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map'
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.js', '.ts']
   },
   devtool: 'source-map',
   module: {
@@ -21,7 +22,10 @@ module.exports = {
         test: /\.ts$/,
         use: [
           {
-            loader: 'aweswome-typescript-loader',
+            loader: 'awesome-typescript-loader',
+            // options: {
+            //   configFileName: path.resolve(__dirname, 'tsconfig.json')
+            // }
           },
         ]
       }
