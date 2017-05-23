@@ -27,6 +27,14 @@ module.exports = {
             //   configFileName: path.resolve(__dirname, 'tsconfig.json')
             // }
           },
+          'angular2-template-loader'
+        ]
+      }, {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
         ]
       }
     ]
