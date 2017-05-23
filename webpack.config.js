@@ -1,5 +1,6 @@
 const path = require('path');
 // const { CheckerPlugin } = require('awesome-typescript-loader');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -36,6 +37,15 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
+      }, {
+        test: /\.css$/,
+        use: 'raw-loader'
+      }, {
+        test: /\.css$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?sourceMap"
+        })
       }
     ]
   },
@@ -44,6 +54,9 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       hash: true
+    }),
+    new ExtractTextWebpackPlugin({
+      filename: '[name].css'
     })
   ]
 }

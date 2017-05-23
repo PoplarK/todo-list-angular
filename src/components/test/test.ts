@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'test',
+  styleUrls: [
+    './test.css'
+  ],
   templateUrl: './test.html'
 })
-export class TestComponent implements OnInit {
-  private name: string;
+export class TestComponent {
+  private name: string = 'original test';
   constructor() {
-    // super();
-  }
-  ngOnInit() {
-    this.name = 'test';
+    this.name = this.name || 'test';
   }
 }
