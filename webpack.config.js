@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 // const { CheckerPlugin } = require('awesome-typescript-loader');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -44,7 +45,7 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextWebpackPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader?sourceMap"
+          use: "css-loader?sourceMap&minimize"
         })
       }, {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -68,6 +69,10 @@ module.exports = {
     }),
     new ExtractTextWebpackPlugin({
       filename: '[name].css'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      comments: false
     })
   ]
 }
