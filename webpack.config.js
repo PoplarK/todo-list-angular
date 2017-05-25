@@ -46,6 +46,17 @@ module.exports = {
           fallback: "style-loader",
           use: "css-loader?sourceMap"
         })
+      }, {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              publicPath: '',
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
