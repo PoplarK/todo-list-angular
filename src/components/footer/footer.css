@@ -1,0 +1,11 @@
+.footer {
+  border: 1px solid #ddd;
+}
+
+.counter,
+.actions,
+.btn-action,
+.btn-clear {
+  display: inline-block;
+  cursor: pointer;
+}
