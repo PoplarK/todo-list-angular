@@ -4,7 +4,9 @@ const webpack = require('webpack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const config = require('./config');
+
+const webpackConfig = {
   context: path.resolve(__dirname, "src"),
   entry: {
     index: './main.ts',
@@ -41,24 +43,7 @@ module.exports = {
       }, {
         test: /\.css$/,
         use: 'raw-loader'
-      }, {
-        test: /\.css$/,
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader?sourceMap&minimize"
-        })
-      }, {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              publicPath: '',
-              limit: 8192
-            }
-          }
-        ]
-      }
+      },
     ]
   },
   plugins: [
@@ -69,10 +54,20 @@ module.exports = {
     }),
     new ExtractTextWebpackPlugin({
       filename: '[name].css'
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      comments: false
     })
   ]
 }
+
+if(config.styleRule) {
+  webpackConfig.module.rules.push(config.styleRule);
+}
+
+if(config.imageRule) {
+  webpackConfig.module.rules.push(config.imageRule);
+}
+
+if(config.uglifyjsPlugin) {
+  webpackConfig.plugins.push(config.uglifyjsPlugin);
+}
+
+module.exports = webpackConfig;

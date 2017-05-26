@@ -1,3 +1,33 @@
 .test {
   background-color: #ddd;
 }
+
+.avatar,
+.avatar-16,
+.avatar-32,
+.avatar-64 {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.avatar {
+  width: 460px;
+  height: 460px;
+  background-image: url(../../../assets/images/avatar/avatar.jpeg);
+}
+.avatar-16 {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../assets/images/avatar/avatar-16.png);
+}
+.avatar-32 {
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../assets/images/avatar/avatar-32.png);
+}
+.avatar-64 {
+  width: 64px;
+  height: 64px;
+  background-image: url(../../../assets/images/avatar/avatar-64.png);
+}
