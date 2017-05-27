@@ -1,4 +1,4 @@
-class Todo {
+export class Todo {
   private _content: String;
   private _isDone: Boolean = false;
   constructor(text: string = '') {
@@ -10,6 +10,9 @@ class Todo {
   set content(text: String) {
     this._content = text;
   }
+  get isDone(): Boolean {
+    return this._isDone;
+  }
   done() {
     this._isDone = true;
   }
@@ -20,5 +23,3 @@ class Todo {
     this._isDone = !this._isDone;
   }
 }
-
-export default Todo;

@@ -1,8 +1,8 @@
 <div class="main">
-  <tl-header></tl-header>
+  <tl-header [done]="allDone" (toggle)="toggleAll()" (add)="addOne($event)"></tl-header>
   <div class="body">
     <ul class="todos">
-      <todo></todo>
+      <todo *ngFor="let todo of todos" [model]="todo"></todo>
     </ul>
   </div>
   <tl-footer></tl-footer>

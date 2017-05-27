@@ -1,5 +1,5 @@
 <div class="header">
-  <input type="checkbox">
-  <input type="text">
-  <button class="btn-add">Add</button>
+  <input type="checkbox" [checked]="done" (click)="handleToggle()">
+  <input [(ngModel)]="content" (keyup.enter)="handleAdd()">
+  <button class="btn-add" (click)="handleAdd()">Add</button>
 </div>

@@ -1,7 +1,7 @@
 <li class="todo">
   <div class="view">
-    <input type="checkbox">
-    <label></label>
+    <input type="checkbox" [checked]="model.isDone">
+    <label>{{model.content}}</label>
     <i class="delete"></i>
     <input class="edit" type="text">
   </div>
