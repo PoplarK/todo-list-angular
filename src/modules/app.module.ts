@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Root } from '../components/root/root';
 import { Header } from '../components/header/header';
-import { Todo } from '../components/todo/todo';
+import { TodoComponent } from '../components/todo/todo';
 import { Footer } from '../components/footer/footer';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { Footer } from '../components/footer/footer';
     BrowserModule,
     FormsModule
   ],
-  declarations: [ Root, Header, Todo, Footer ],
+  declarations: [ Root, Header, TodoComponent, Footer ],
   providers: [],
   bootstrap: [ Root ],
 })

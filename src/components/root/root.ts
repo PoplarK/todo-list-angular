@@ -23,7 +23,9 @@ export class Root implements OnInit {
   toggleAll = () => {
     let all = this.todos,
       done = this.getSubTodos("done");
-    if(done.length!==all.length) {
+    if(all.length<1) {
+      this.allDone = false;
+    } else if(done.length!==all.length) {
       this.todos = this.todos.map(item => {
         item.done();
         return item;
@@ -60,5 +62,26 @@ export class Root implements OnInit {
 
   addOne = (content: string) => {
     this.todos.push(new Todo(content));
+    this.allDone = false;
+  }
+
+  toggleOne = () => {
+    let all = this.todos,
+      done = this.getSubTodos("done");
+    if(all.length<1) {
+      this.allDone = false;
+    } else if(done.length!==all.length) {
+      this.allDone = false;
+    } else {
+      this.allDone = true;
+    }
+  }
+
+  deleteOne = (todo: Todo) => {
+    let index = this.todos.findIndex(item => {
+      return item === todo;
+    });
+    this.todos.splice(index, 1);
+    this.toggleOne();
   }
 }

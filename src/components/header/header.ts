@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnChanges, SimpleChange , EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tl-header',
@@ -13,8 +13,8 @@ export class Header implements OnChanges {
   @Output() toggle = new EventEmitter();
   @Output() add = new EventEmitter<string>();
 
-  ngOnChanges() {
-    console.log("change", this.done);
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    console.log("change", changes, this.done);
   }
 
   constructor() {

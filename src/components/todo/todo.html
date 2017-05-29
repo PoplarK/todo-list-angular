@@ -1,8 +1,8 @@
 <li class="todo">
   <div class="view">
-    <input type="checkbox" [checked]="model.isDone">
+    <input type="checkbox" [checked]="model.isDone" (click)="handleToggle()">
     <label>{{model.content}}</label>
-    <i class="delete"></i>
-    <input class="edit" type="text">
+    <i class="delete" (click)="handleDelete()">delete</i>
+    <input class="edit" (click)="handleEdit()">
   </div>
 </li>
