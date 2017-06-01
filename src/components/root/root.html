@@ -1,5 +1,5 @@
 <div class="main">
-  <tl-header [done]="allDone" (toggle)="toggleAll()" (add)="addOne($event)"></tl-header>
+  <tl-header [canToggleAll]="!isEmpty" [done]="allDone" (toggle)="toggleAll()" (add)="addOne($event)"></tl-header>
   <div class="body">
     <ul class="todos">
       <todo *ngFor="let todo of todos" [model]="todo" (toggle)="toggleOne()" (delete)="deleteOne($event)"></todo>

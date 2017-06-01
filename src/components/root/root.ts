@@ -14,6 +14,10 @@ export class Root implements OnInit {
   constructor() {
   }
 
+  public get isEmpty () {
+    return !(this.todos.length > 0);
+  }
+
   ngOnInit() {
     let len = this.todos.length;
     let sub = this.getSubTodos('done');

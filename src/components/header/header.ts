@@ -8,10 +8,11 @@ import { Component, Input, Output, OnChanges, SimpleChange , EventEmitter } from
 export class Header implements OnChanges {
   content: String = '';
 
+  @Input() canToggleAll: Boolean;
   @Input() done: Boolean;
 
   @Output() toggle = new EventEmitter();
-  @Output() add = new EventEmitter<string>();
+  @Output() add = new EventEmitter<String>();
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     console.log("change", changes, this.done);
