@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Todo } from '../../model/todo';
 
 @Component({
@@ -7,6 +7,9 @@ import { Todo } from '../../model/todo';
   templateUrl: './todo.html'
 })
 export class TodoComponent {
+  private isEditing: Boolean = false;
+
+  @ViewChild('input') child;
 
   @Input() model: Todo;
   @Output() toggle = new EventEmitter();
@@ -25,5 +28,16 @@ export class TodoComponent {
   }
 
   handleEdit = () => {
+    this.isEditing = true;
+    setTimeout(() => {
+      this.child.nativeElement.focus();
+    }, 5);
+  }
+
+  handleSave = (content: String) => {
+    if(content.trim()) {
+      this.model.content = content;
+    }
+    this.isEditing = false;
   }
 }

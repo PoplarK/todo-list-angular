@@ -1,8 +1,8 @@
-<li class="todo">
+<li class="todo" [ngClass]="{editing: isEditing}">
   <div class="view">
     <input type="checkbox" [checked]="model.isDone" (click)="handleToggle()">
-    <label>{{model.content}}</label>
+    <label (dblclick)="handleEdit();input.value=model.content;">{{model.content}}</label>
     <i class="delete" (click)="handleDelete()">delete</i>
-    <input class="edit" (click)="handleEdit()">
   </div>
+  <input type="text" class="edit" #input (blur)="handleSave('');" (keyup.enter)="handleSave(input.value);">
 </li>
