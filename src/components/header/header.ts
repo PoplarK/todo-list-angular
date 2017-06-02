@@ -6,7 +6,6 @@ import { Component, Input, Output, OnChanges, SimpleChange , EventEmitter } from
   templateUrl: './header.html'
 })
 export class Header implements OnChanges {
-  content: String = '';
 
   @Input() canToggleAll: Boolean;
   @Input() done: Boolean;
@@ -25,12 +24,10 @@ export class Header implements OnChanges {
     this.toggle.emit();
   }
 
-  handleAdd = () => {
-    // todo - focus input
-    let value = this.content.trim();
+  handleAdd = (content: String) => {
+    let value = content.trim();
     if(!value) return false;
 
     this.add.emit(value);
-    this.content = '';
   }
 }

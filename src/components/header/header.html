@@ -1,5 +1,5 @@
 <div class="header">
   <input *ngIf="canToggleAll" type="checkbox" [checked]="done" (click)="handleToggle()">
-  <input [(ngModel)]="content" (keyup.enter)="handleAdd()">
-  <button class="btn-add" (click)="handleAdd()">Add</button>
+  <input #input (keyup.enter)="handleAdd(input.value);input.value='';input.focus();">
+  <button class="btn-add" (click)="handleAdd(input.value);input.value='';input.focus();">Add</button>
 </div>

@@ -1,7 +1,7 @@
 export class Todo {
   private _content: String;
   private _isDone: Boolean = false;
-  constructor(text: string = '') {
+  constructor(text: String = '') {
     this._content = text;
   }
   get content(): String {

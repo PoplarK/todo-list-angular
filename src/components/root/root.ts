@@ -64,7 +64,7 @@ export class Root implements OnInit {
     return result;
   }
 
-  addOne = (content: string) => {
+  addOne = (content: String) => {
     this.todos.push(new Todo(content));
     this.allDone = false;
   }
