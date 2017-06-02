@@ -8,6 +8,7 @@ import { Todo } from '../../model/todo';
 })
 
 export class Root implements OnInit {
+  private filter: String = 'all';
   private allDone: Boolean = false;
   private todos: Array<Todo> = [];
 
@@ -87,5 +88,37 @@ export class Root implements OnInit {
     });
     this.todos.splice(index, 1);
     this.toggleOne();
+  }
+
+  setFilter = (type: String) => {
+    switch(type) {
+      case 'unDone':
+        this.filter = 'unDone';
+        break;
+      case 'done':
+        this.filter = 'done';
+        break;
+      case 'all':
+      default:
+        this.filter = 'all';
+    }
+  }
+
+  get model(): Array<Todo> {
+    return this.getSubTodos(this.filter);
+  }
+
+  clearCompleted = () => {
+    this.todos = this.todos.filter(item => {
+      return !item.isDone;
+    })
+  }
+
+  get totalCount(): Number {
+    return this.getSubTodos('all').length;
+  }
+
+  get doneCount(): Number {
+    return this.getSubTodos('done').length;
   }
 }

@@ -1,9 +1,9 @@
-<div class="footer">
-  <div class="counter"></div>
+<div class="footer" *ngIf="total>0">
+  <div class="counter">{{total}}/{{done}}</div>
   <div class="actions">
-    <div class="btn-action">All</div>
-    <div class="btn-action">Active</div>
-    <div class="btn-action">Completed</div>
+    <div class="btn-action" [ngClass]="{active: 'all'===filter}" (click)="clickFilter('all')">All</div>
+    <div class="btn-action" [ngClass]="{active: 'unDone'===filter}" (click)="clickFilter('unDone')">Active</div>
+    <div class="btn-action" [ngClass]="{active: 'done'===filter}" (click)="clickFilter('done')">Completed</div>
   </div>
-  <div class="btn-clear">Clear Completed</div>
+  <div class="btn-clear" *ngIf="done>0" (click)="clickClear()">Clear Completed</div>
 </div>

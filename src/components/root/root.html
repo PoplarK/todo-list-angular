@@ -2,8 +2,8 @@
   <tl-header [canToggleAll]="!isEmpty" [done]="allDone" (toggle)="toggleAll()" (add)="addOne($event)"></tl-header>
   <div class="body">
     <ul class="todos">
-      <todo *ngFor="let todo of todos" [model]="todo" (toggle)="toggleOne()" (delete)="deleteOne($event)"></todo>
+      <todo *ngFor="let todo of model" [model]="todo" (toggle)="toggleOne()" (delete)="deleteOne($event)"></todo>
     </ul>
   </div>
-  <tl-footer></tl-footer>
+  <tl-footer [total]="totalCount" [done]="doneCount" [filter]="filter" (setFilter)="setFilter($event)" (clear)="clearCompleted()"></tl-footer>
 </div>

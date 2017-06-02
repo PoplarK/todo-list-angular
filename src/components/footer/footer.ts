@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tl-footer',
@@ -6,7 +6,31 @@ import { Component } from '@angular/core';
   templateUrl: './footer.html'
 })
 export class Footer {
+
+  @Input() filter: String;
+  @Input() total: Number;
+  @Input() done: Number;
+  @Output() setFilter = new EventEmitter<String>();
+  @Output() clear = new EventEmitter();
+
   constructor() {
   }
 
+  clickFilter = (type) => {
+    switch(type) {
+      case 'unDone':
+        this.setFilter.emit('unDone');
+        break;
+      case 'done':
+        this.setFilter.emit('done');
+        break;
+      case 'all':
+      default:
+        this.setFilter.emit('all');
+    }
+  }
+
+  clickClear = () => {
+    this.clear.emit();
+  }
 }
